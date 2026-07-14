@@ -1,0 +1,96 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getPermalink } from '~/utils/permalinks';
+import { CATEGORIES, GOALS, type WorkoutPlan } from '~/data/workouts';
+
+export interface Props {
+  workout: WorkoutPlan;
+  class?: string;
+}
+
+const { workout, class: className = '' } = Astro.props;
+
+const cat = CATEGORIES[workout.category];
+const goalLabels = workout.goals.map((g) => GOALS[g].label);
+
+const link = getPermalink(`/workout/${workout.slug}`);
+---
+
+<a
+  href={link}
+  class:list={[
+    'group relative flex flex-col overflow-hidden rounded-2xl bg-neutral-900 border border-white/5 hover:border-red-600/40 transition-all duration-300 hover:shadow-2xl hover:shadow-red-900/20 hover:-translate-y-1 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade',
+    className,
+  ]}
+>
+  <div class="relative h-52 overflow-hidden">
+    <img
+      src={workout.image}
+      alt={workout.title}
+      loading="lazy"
+      decoding="async"
+      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/40 to-transparent"></div>
+    <div class="absolute top-3 left-3 flex gap-2">
+      <span
+        class:list={[
+          'px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wide',
+          workout.category === 'beginner' && 'bg-green-600 text-white',
+          workout.category === 'intermediate' && 'bg-amber-500 text-white',
+          workout.category === 'advanced' && 'bg-red-600 text-white',
+        ]}
+      >
+        {cat.label}
+      </span>
+    </div>
+    <div class="absolute top-3 right-3 flex items-center gap-1 bg-black/60 backdrop-blur px-2 py-1 rounded-full text-xs font-semibold text-white">
+      <Icon name="tabler:clock" class="w-3.5 h-3.5" />
+      {workout.duration}
+    </div>
+    <div class="absolute bottom-3 left-3 right-3">
+      <h3 class="text-xl font-extrabold text-white tracking-tight">{workout.title}</h3>
+      <p class="text-sm text-gray-300 mt-0.5">{workout.subtitle}</p>
+    </div>
+  </div>
+
+  <div class="flex flex-col flex-grow p-4">
+    <div class="flex flex-wrap gap-1.5 mb-3">
+      {
+        goalLabels.map((label) => (
+          <span class="text-xs px-2 py-0.5 rounded bg-white/5 text-gray-400 border border-white/5">
+            {label}
+          </span>
+        ))
+      }
+    </div>
+
+    <div class="flex items-center gap-4 text-sm text-gray-400 mb-4">
+      <span class="flex items-center gap-1">
+        <Icon name="tabler:calendar-week" class="w-4 h-4 text-red-500" />
+        {workout.daysPerWeek} days/wk
+      </span>
+      <span class="flex items-center gap-1">
+        <Icon name="tabler:dumbbell" class="w-4 h-4 text-red-500" />
+        {workout.exercises.length} exercises
+      </span>
+      <span class="flex items-center gap-1">
+        {
+          [...Array(3)].map((_, i) => (
+            <Icon
+              name="tabler:flame"
+              class:list={['w-4 h-4', i < workout.difficulty ? 'text-red-500' : 'text-white/10']}
+            />
+          ))
+        }
+      </span>
+    </div>
+
+    <div class="mt-auto flex items-center justify-between">
+      <span class="text-sm font-semibold text-red-500 group-hover:text-red-400 transition flex items-center gap-1">
+        View Plan
+        <Icon name="tabler:arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+      </span>
+    </div>
+  </div>
+</a>

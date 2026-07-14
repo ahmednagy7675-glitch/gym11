@@ -1,398 +1,343 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
-import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import { Icon } from 'astro-icon/components';
+import WorkoutCard from '~/components/WorkoutCard.astro';
+import { WORKOUTS, CATEGORIES, GOALS, type Category, type Goal } from '~/data/workouts';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'IRONPULSE — Premium Workout Plans for Every Level',
+  description: 'Train smarter, get stronger, and transform your body with IRONPULSE. 12 premium workout plans across beginner, intermediate, and advanced levels.',
   ignoreTitleTemplate: true,
 };
+
+const stats = [
+  { amount: '12', title: 'Workout Plans' },
+  { amount: '60+', title: 'Exercises' },
+  { amount: '3', title: 'Levels' },
+  { amount: '4', title: 'Training Goals' },
+];
+
+const features = [
+  {
+    title: 'Structured Progression',
+    description: 'Every plan is built with progressive overload — you always know what to lift next.',
+    icon: 'tabler:trending-up',
+  },
+  {
+    title: 'Every Muscle Group',
+    description: 'Push, pull, legs, core, and conditioning — full coverage across all plans.',
+    icon: 'tabler:body-scan',
+  },
+  {
+    title: 'Built for Real Results',
+    description: 'Programs designed by athletes, proven in the gym, ready for you to start today.',
+    icon: 'tabler:award',
+  },
+  {
+    title: 'Zero Guesswork',
+    description: 'Sets, reps, rest, and notes for every exercise. Just follow the plan.',
+    icon: 'tabler:list-check',
+  },
+];
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  <!-- Hero Section ******************* -->
 
-  <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-      { text: 'Learn more', href: '#features' },
-    ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
-  >
-    <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white"> Astro v6</span> + Tailwind CSS
-    </Fragment>
+  <section class="relative md:-mt-[76px] not-prose overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1534438327275-aea6d88d1e4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+        alt="Athlete training"
+        class="w-full h-full object-cover"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/80 to-neutral-950"></div>
+    </div>
 
-    <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro v6 +
-        Tailwind CSS v4.</span
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
+      <div class="py-20 md:py-32 lg:py-40">
+        <div class="max-w-3xl">
+          <p
+            class="text-base text-red-500 font-bold tracking-widest uppercase intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+          >
+            Train Harder. Get Stronger.
+          </p>
+          <h1
+            class="mt-4 text-5xl md:text-7xl lg:text-8xl font-extrabold leading-none tracking-tighter text-white intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+          >
+            FORGE YOUR<br />
+            <span class="text-red-500">BEST BODY</span>
+          </h1>
+          <p
+            class="mt-6 text-lg md:text-xl text-gray-300 max-w-xl intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+          >
+            12 premium workout plans. Beginner to advanced. Muscle gain, fat loss, strength, and PPL. Your transformation starts now.
+          </p>
+          <div
+            class="mt-10 flex flex-col sm:flex-row gap-4 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+          >
+            <a
+              href="#workouts"
+              class="btn-primary font-semibold inline-flex items-center justify-center gap-2"
+            >
+              <Icon name="tabler:bolt" class="w-5 h-5" />
+              Start Training
+            </a>
+            <a
+              href="#about"
+              class="btn inline-flex items-center justify-center gap-2 border-white/20 text-white hover:bg-white/10 hover:border-white/40"
+            >
+              Learn More
+              <Icon name="tabler:arrow-right" class="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar ********************* -->
+
+  <section class="bg-neutral-950 border-y border-white/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        {
+          stats.map((s) => (
+            <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+              <div class="text-4xl md:text-5xl font-extrabold text-red-500 tracking-tight">{s.amount}</div>
+              <div class="mt-1 text-sm font-semibold uppercase tracking-widest text-gray-500">{s.title}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Features ********************** -->
+
+  <section id="about" class="relative scroll-mt-[72px]">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="text-red-500 font-bold tracking-widest uppercase text-sm">Why IRONPULSE</p>
+        <h2 class="mt-2 text-3xl md:text-5xl font-extrabold tracking-tighter text-white">
+          Programs that actually work
+        </h2>
+        <p class="mt-4 text-lg text-gray-400">
+          No fluff. No gimmicks. Just structured training plans built to get you stronger, leaner, and bigger.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {
+          features.map((f) => (
+            <div class="rounded-2xl bg-neutral-900 border border-white/5 p-6 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade hover:border-red-600/30 transition">
+              <div class="w-12 h-12 rounded-xl bg-red-600/10 flex items-center justify-center mb-4">
+                <Icon name={f.icon} class="w-6 h-6 text-red-500" />
+              </div>
+              <h3 class="text-lg font-bold text-white">{f.title}</h3>
+              <p class="mt-2 text-sm text-gray-400">{f.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories ********************* -->
+
+  <section class="bg-neutral-950 border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="text-red-500 font-bold tracking-widest uppercase text-sm">Choose Your Level</p>
+        <h2 class="mt-2 text-3xl md:text-5xl font-extrabold tracking-tighter text-white">Three paths. One goal.</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {
+          (Object.keys(CATEGORIES) as Category[]).map((key, i) => {
+            const cat = CATEGORIES[key];
+            const count = WORKOUTS.filter((w) => w.category === key).length;
+            return (
+              <a
+                id={cat.slug}
+                href={`#workouts`}
+                class="scroll-mt-[72px] group relative overflow-hidden rounded-2xl border border-white/5 hover:border-red-600/40 transition-all duration-300 hover:-translate-y-1 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+              >
+                <div class:list={[
+                  'absolute inset-0 bg-gradient-to-br',
+                  key === 'beginner' && 'from-green-900/30 to-neutral-900',
+                  key === 'intermediate' && 'from-amber-900/30 to-neutral-900',
+                  key === 'advanced' && 'from-red-900/30 to-neutral-900',
+                ]} />
+                <div class="relative p-8 text-center">
+                  <div class:list={[
+                    'inline-flex w-16 h-16 rounded-full items-center justify-center text-2xl font-extrabold mb-4',
+                    key === 'beginner' && 'bg-green-600 text-white',
+                    key === 'intermediate' && 'bg-amber-500 text-white',
+                    key === 'advanced' && 'bg-red-600 text-white',
+                  ]}>
+                    {i + 1}
+                  </div>
+                  <h3 class="text-2xl font-extrabold text-white">{cat.label}</h3>
+                  <p class="mt-2 text-gray-400">{cat.description}</p>
+                  <p class="mt-4 text-sm font-semibold text-red-500">{count} plans available</p>
+                </div>
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Workouts with Filters ********* -->
+
+  <section id="workouts" class="relative scroll-mt-[72px]">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <p class="text-red-500 font-bold tracking-widest uppercase text-sm">Workout Plans</p>
+        <h2 class="mt-2 text-3xl md:text-5xl font-extrabold tracking-tighter text-white">Find your program</h2>
+        <p class="mt-4 text-lg text-gray-400">Filter by level and goal to find the plan that fits you.</p>
+      </div>
+
+      <!-- Filter Controls -->
+      <div class="flex flex-col gap-4 mb-10" data-workout-filters>
+        <div class="flex flex-wrap justify-center gap-2" data-filter-group="category">
+          <button class="filter-btn active" data-filter="all">All Levels</button>
+          {
+            (Object.keys(CATEGORIES) as Category[]).map((key) => (
+              <button class="filter-btn" data-filter={key} id={CATEGORIES[key].slug}>
+                {CATEGORIES[key].label}
+              </button>
+            ))
+          }
+        </div>
+        <div class="flex flex-wrap justify-center gap-2" data-filter-group="goal">
+          <button class="filter-btn active" data-filter="all">All Goals</button>
+          {
+            (Object.keys(GOALS) as Goal[]).map((key) => (
+              <button class="filter-btn" data-filter={key} id={GOALS[key].slug}>
+                {GOALS[key].label}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Workout Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-workout-grid>
+        {WORKOUTS.map((workout) => <WorkoutCard workout={workout} data-category={workout.category} data-goals={workout.goals.join(',')} />)}
+      </div>
+
+      <p class="hidden text-center text-gray-500 mt-12" data-no-results>No workouts match your filters.</p>
+    </div>
+  </section>
+
+  <!-- Call To Action **************** -->
+
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1517836357463-d25dfe029c38?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+        alt="Gym"
+        class="w-full h-full object-cover"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-black/80"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 md:px-6 py-20 md:py-32 text-center">
+      <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter text-white intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+        Your only limit is <span class="text-red-500">you</span>.
+      </h2>
+      <p class="mt-4 text-lg md:text-xl text-gray-300 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+        Stop searching for the perfect plan. Pick one. Start today. Show up every day.
+      </p>
+      <a
+        href="#workouts"
+        class="mt-8 btn-primary font-semibold inline-flex items-center justify-center gap-2 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
       >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages & Blogs.
-    </Fragment>
-  </Hero>
-
-  <!-- Note Widget ******************* -->
-
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
-
-  <!-- Features Widget *************** -->
-
-  <Features
-    id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023, 2024 and 2025."
-    items={[
-      {
-        title: 'Astro + Tailwind CSS Integration',
-        description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility. Now powered by Tailwind CSS v4.',
-        icon: 'tabler:brand-tailwind',
-      },
-      {
-        title: 'Ready-to-use Components',
-        description:
-          'Widgets made with Tailwind CSS v4 ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
-      },
-      {
-        title: 'Best Practices',
-        description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
-      },
-      {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
-      },
-    ]}
-  />
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
-    items={[
-      {
-        title: 'Built on top of Astro v6',
-        description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
-      },
-      {
-        title: 'Styled using Tailwind CSS v4',
-        description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
-      },
-      {
-        title: 'Cross-browser compatibility',
-        description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      },
-      {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="Get your dream website up and running in no time with AstroWind."
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Download</span>',
-        description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
-        description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
-        description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
-      },
-      {
-        title: 'Ready!',
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS v4"
-    tagline="Components"
-    items={[
-      {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
-      },
-      {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
-
-  <!-- HighlightedPosts Widget ******* -->
-
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro v6 + Tailwind CSS v4.
-                        Astro is a very interesting technology. Thanks.
-                `}
-  />
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'Why AstroWind?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
-      },
-      {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
-      },
-      {
-        title: 'How to install the Astro + Tailwind CSS template?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
-      },
-      {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
-      },
-    ]}
-  />
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
-    ]}
-  />
-
-  <!-- CallToAction Widget *********** -->
-
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
-    </Fragment>
-  </CallToAction>
+        <Icon name="tabler:bolt" class="w-5 h-5" />
+        Browse All Plans
+      </a>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #171717;
+    color: #9ca3af;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .filter-btn:hover {
+    color: #fff;
+    border-color: rgba(239, 68, 68, 0.4);
+  }
+  .filter-btn.active {
+    background-color: rgb(239 68 68);
+    color: #fff;
+    border-color: rgb(239 68 68);
+  }
+</style>
+
+<script>
+  const filterGroups = document.querySelectorAll('[data-filter-group]');
+  const grid = document.querySelector('[data-workout-grid]');
+  const noResults = document.querySelector('[data-no-results]');
+  if (!grid || !noResults) {
+    /* nothing to do */
+  } else {
+    const cards = Array.from(grid.querySelectorAll('[data-category]')) as HTMLElement[];
+
+    const state: Record<string, string> = { category: 'all', goal: 'all' };
+
+    const apply = () => {
+      let visible = 0;
+      cards.forEach((card) => {
+        const cat = card.dataset.category || '';
+        const goals = (card.dataset.goals || '').split(',');
+        const catOk = state.category === 'all' || cat === state.category;
+        const goalOk = state.goal === 'all' || goals.includes(state.goal);
+        if (catOk && goalOk) {
+          card.classList.remove('hidden');
+          visible++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+      noResults.classList.toggle('hidden', visible > 0);
+    };
+
+    filterGroups.forEach((group) => {
+      const groupName = (group as HTMLElement).dataset.filterGroup || '';
+      group.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (!target.classList.contains('filter-btn')) return;
+        group.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('active'));
+        target.classList.add('active');
+        state[groupName] = target.dataset.filter || 'all';
+        apply();
+      });
+    });
+
+    // Handle hash-based deep links to filters
+    const hash = window.location.hash.replace('#', '');
+    const knownCats = ['beginner', 'intermediate', 'advanced'];
+    const knownGoals = ['muscle-gain', 'fat-loss', 'strength', 'ppl'];
+    if (knownCats.includes(hash) || knownGoals.includes(hash)) {
+      const group = knownCats.includes(hash) ? 'category' : 'goal';
+      const btn = document.querySelector(`[data-filter-group="${group}"] [data-filter="${hash}"]`) as HTMLElement | null;
+      if (btn) {
+        btn.click();
+      }
+    }
+  }
+</script>
