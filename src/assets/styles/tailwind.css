@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
 
 @plugin "@tailwindcss/typography";
 
@@ -14,10 +15,10 @@
   --color-muted: var(--aw-color-text-muted);
 
   --font-sans:
-    'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Cairo', 'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-serif: 'Inter Variable', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-  --font-heading: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Cairo', 'Inter Variable', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-heading: 'Cairo', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
 
   --animate-fade: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-fade-scale: fadeInScale 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;

@@ -2,7 +2,7 @@
 import Layout from '~/layouts/Layout.astro';
 import { getPermalink } from '~/utils/permalinks';
 
-const title = `Error 404`;
+const title = `خطأ 404`;
 ---
 
 <Layout metadata={{ title }}>
@@ -10,14 +10,14 @@ const title = `Error 404`;
     <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
       <div class="max-w-md text-center">
         <h2 class="mb-8 font-black text-9xl">
-          <span class="sr-only">Error</span>
+          <span class="sr-only">خطأ</span>
           <span class="text-primary">404</span>
         </h2>
-        <p class="text-3xl font-semibold md:text-3xl text-white">Page not found.</p>
+        <p class="text-3xl font-semibold md:text-3xl text-white">الصفحة غير موجودة.</p>
         <p class="mt-4 mb-8 text-lg text-muted">
-          This page doesn't exist. Let's get you back to training.
+          الصفحة دي مش موجودة. يلا نرجع للتدريب.
         </p>
-        <a rel="noopener noreferrer" href={getPermalink('/')} class="btn-primary">Back to homepage</a>
+        <a rel="noopener noreferrer" href={getPermalink('/')} class="btn-primary">ارجع للرئيسية</a>
       </div>
     </div>
   </section>

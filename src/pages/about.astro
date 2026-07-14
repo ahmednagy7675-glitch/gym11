@@ -3,25 +3,25 @@ import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon/components';
 
 const metadata = {
-  title: 'About Coach Fares',
+  title: 'عن الكوتش فارس',
 };
 ---
 
 <Layout metadata={metadata}>
   <section class="relative md:-mt-[76px] not-prose overflow-hidden">
     <div class="absolute inset-0">
-      <img src="/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg" alt="Coach Fares" class="w-full h-full object-cover object-top opacity-40" loading="eager" />
+      <img src="/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg" alt="الكوتش فارس" class="w-full h-full object-cover object-top opacity-40" loading="eager" />
       <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/85 to-neutral-950"></div>
     </div>
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6">
       <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
       <div class="py-20 md:py-32">
-        <p class="reveal text-amber-500 font-bold tracking-widest uppercase text-sm">About</p>
+        <p class="reveal text-amber-500 font-bold tracking-widest uppercase text-sm">عن الكوتش</p>
         <h1 class="reveal mt-4 text-4xl md:text-6xl font-black tracking-tighter text-white">
-          Coach <span class="text-gradient-gold">Tem Fares</span>
+          الكوتش <span class="text-gradient-gold">تم فارس</span>
         </h1>
         <p class="reveal mt-6 text-lg text-gray-300 max-w-2xl">
-          Online coach specializing in Push Pull Legs training and precision nutrition. I help people transform their bodies in 20 days — with structured plans, real food, and zero guesswork.
+          كوتش أونلاين متخصص في تدريب Push Pull Legs وتغذية دقيقة. بمساعد الناس أغير شكل جسمهم في 20 يوم — بخطط منظمة، أكل حقيقي، وبدون تعقيد.
         </p>
       </div>
     </div>
@@ -31,9 +31,9 @@ const metadata = {
     <div class="grid sm:grid-cols-3 gap-6 mb-16 stagger">
       {
         [
-          { icon: 'tabler:target', title: 'My Mission', text: 'Make elite-level coaching accessible. No expensive gym memberships, no confusion — just plans that work.' },
-          { icon: 'tabler:heartbeat', title: 'My Values', text: 'Discipline, consistency, and honesty. Show up every day, follow the plan, and the results come.' },
-          { icon: 'tabler:trophy', title: 'My Promise', text: 'Every workout and meal plan is tested and proven. You get the exact programming I use with my clients.' },
+          { icon: 'tabler:target', title: 'مهمتي', text: 'أوفر كوتشينج احترافي لكل الناس. بدون اشتراكات جيم غالية، بدون لخبطة — بس خطط بتشتغل.' },
+          { icon: 'tabler:heartbeat', title: 'قيمي', text: 'انضباط، استمرارية، وصدق. أظهر كل يوم، اتبع الخطة، والنتائج هتيجي.' },
+          { icon: 'tabler:trophy', title: 'وعدي', text: 'كل خطة تدريب وأكل مجربة ومثبتة. بتاخد نفس البرمجة اللي بشتغل بيها مع عملائي.' },
         ].map((v) => (
           <div class="glass glass-hover rounded-2xl p-6 text-center hover:border-amber-500/30 hover:-translate-y-1">
             <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mx-auto mb-4">
@@ -47,16 +47,16 @@ const metadata = {
     </div>
 
     <div class="reveal glass rounded-2xl p-8 md:p-12">
-      <h2 class="text-2xl md:text-3xl font-black text-white">The 20-Day System</h2>
+      <h2 class="text-2xl md:text-3xl font-black text-white">نظام الـ 20 يوم</h2>
       <div class="mt-6 space-y-4 text-gray-300 leading-relaxed">
         <p>
-          The TEM FARES system is built on three pillars: a 6-day Push Pull Legs training split, tiered nutrition plans with exact portions, and daily accountability.
+          نظام تم فارس مبني على ثلاث أعمدة: تقسيم تدريب Push Pull Legs لـ 6 أيام، خطط تغذية متدرجة بكميات محددة، ومتابعة يومية.
         </p>
         <p>
-          You train hard six days a week — Push (chest, shoulders, triceps), Pull (back, biceps, rear delts), and Legs (quads, hamstrings, calves). You eat according to your level — beginner, intermediate, or advanced — with every meal, portion, and snack laid out for you.
+          بتدرب بجد 6 أيام في الأسبوع — Push (صدر، أكتاف، ترايسبس)، Pull (ظهر، بايسبس، ديلت خلفي)، وأرجل (أمامي، خلفي، سمانة). وباكل حسب مستواك — مبتدئ، متوسط، أو متقدم — كل وجبة وكمية وسناك موضوحين لك.
         </p>
         <p>
-          Drink 4 liters of water. Add parsley and celery juice. Follow the plan for 20 days. The transformation is real.
+          اشرب 4 لتر ماء. ضيف عصير بقدونس وكرفس. اتبع النظام لـ 20 يوم. التحول حقيقي.
         </p>
       </div>
     </div>
@@ -64,7 +64,7 @@ const metadata = {
     <div class="mt-12 text-center reveal">
       <a href="/#pricing" class="btn-primary font-bold inline-flex items-center justify-center gap-2 text-base">
         <Icon name="tabler:bolt" class="w-5 h-5" />
-        Start Your Transformation
+        ابدأ تحولك دلوقتي
       </a>
     </div>
   </section>

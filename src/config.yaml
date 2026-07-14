@@ -7,9 +7,9 @@ site:
 
 metadata:
   title:
-    default: TEM FARES — Online Coach
-    template: '%s — TEM FARES'
-  description: "Online coaching by Tem Fares. Premium workout and nutrition plans built to transform your body."
+    default: 'تم فارس — كوتش أونلاين'
+    template: '%s — تم فارس'
+  description: "كوتشينج أونلاين مع تم فارس. خطط تدريب وتغذية احترافية لتغيير شكل جسمك بالكامل."
   robots:
     index: true
     follow: true
@@ -26,8 +26,8 @@ metadata:
     cardType: summary_large_image
 
 i18n:
-  language: en
-  textDirection: ltr
+  language: ar
+  textDirection: rtl
 
 apps:
   blog:

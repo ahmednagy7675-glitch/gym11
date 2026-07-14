@@ -4,23 +4,23 @@ import { Icon } from 'astro-icon/components';
 import { WORKOUTS, NUTRITION_PLANS, PRICING_PLANS, CATEGORIES, GOALS, type Category, type Goal } from '~/data/workouts';
 
 const metadata = {
-  title: 'TEM FARES — Online Coach | Premium Workout & Nutrition Plans',
-  description: 'Transform your body with online coaching by Tem Fares. Push Pull Legs training, personalized nutrition plans, and real results.',
+  title: 'تم فارس — كوتش أونلاين | خطط تدريب وتغذية احترافية',
+  description: 'غيّر شكل جسمك مع الكوتشينج الأونلاين من تم فارس. تدريب Push Pull Legs، خطط تغذية مخصصة، ونتائج حقيقية.',
   ignoreTitleTemplate: true,
 };
 
 const stats = [
-  { amount: '20', suffix: 'Days', title: 'Transformation Cycle' },
-  { amount: '6', suffix: 'Days/wk', title: 'Training Split' },
-  { amount: '3', suffix: 'Levels', title: 'Nutrition Plans' },
-  { amount: '4L', suffix: 'Daily', title: 'Water Intake' },
+  { amount: '20', suffix: 'يوم', title: 'دورة التحول' },
+  { amount: '6', suffix: 'أيام/أسبوع', title: 'التقسيم التدريبي' },
+  { amount: '3', suffix: 'مستويات', title: 'خطط التغذية' },
+  { amount: '4L', suffix: 'يومياً', title: 'شرب الماء' },
 ];
 
 const features = [
-  { title: 'Push Pull Legs', description: 'A proven 6-day split hitting every muscle group twice a week for maximum growth.', icon: 'tabler:barbell' },
-  { title: 'Custom Nutrition', description: 'Three tiered meal plans — beginner to advanced — with exact portions and macros.', icon: 'tabler:salad' },
-  { title: 'Real Coaching', description: 'Form checks, progress tracking, and plan adjustments from coach Fares himself.', icon: 'tabler:user-star' },
-  { title: 'No Guesswork', description: 'Every exercise, set, rep, and meal is laid out. Just follow the plan and show up.', icon: 'tabler:list-check' },
+  { title: 'Push Pull Legs', description: 'تقسيم مثالي لـ 6 أيام يستهدف كل مجموعة عضلية مرتين أسبوعياً لأقصى نمو.', icon: 'tabler:barbell' },
+  { title: 'تغذية مخصصة', description: 'ثلاثة أنظمة غذائية متدرجة — من المبتدئ للمتقدم — بكميات وماكروز محددة.', icon: 'tabler:salad' },
+  { title: 'كوتشينج حقيقي', description: 'مراجعة أداء، متابعة تقدم، وتعديل خطط من الكوتش فارس شخصياً.', icon: 'tabler:user-star' },
+  { title: 'بدون تعقيد', description: 'كل تمرين، مجموعة، تكرار، ووجبة موضوعة. فقط اتبع الخطة والتزم.', icon: 'tabler:list-check' },
 ];
 
 const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
@@ -33,7 +33,7 @@ const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
     <div class="absolute inset-0">
       <img
         src="https://images.unsplash.com/photo-1534438327275-aea6d88d1e4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-        alt="Training"
+        alt="تدريب"
         class="w-full h-full object-cover"
         loading="eager"
         fetchpriority="high"
@@ -48,47 +48,47 @@ const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
         <div>
           <div class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-6">
             <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-            <span class="text-xs font-semibold tracking-widest uppercase text-amber-400">Online Coaching Now Open</span>
+            <span class="text-xs font-semibold tracking-widest uppercase text-amber-400">الكوتشينج الأونلاين متاح الآن</span>
           </div>
 
           <h1 class="reveal text-5xl md:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tighter text-white">
-            BUILD YOUR<br />
-            <span class="text-gradient-gold">BEST BODY</span>
+            ابنِ<br />
+            <span class="text-gradient-gold">أفضل جسم</span>
           </h1>
 
           <p class="reveal mt-6 text-lg md:text-xl text-gray-300 max-w-lg leading-relaxed">
-            Premium workout and nutrition plans by coach Tem Fares. Push Pull Legs training, precise meal plans, and real accountability — all online.
+            خطط تدريب وتغذية احترافية مع الكوتش تم فارس. تدريب Push Pull Legs، خطط أكل دقيقة، ومتابعة حقيقية — كله أونلاين.
           </p>
 
           <div class="reveal mt-10 flex flex-col sm:flex-row gap-4">
             <a href="#pricing" class="btn-primary font-bold inline-flex items-center justify-center gap-2 text-base">
               <Icon name="tabler:bolt" class="w-5 h-5" />
-              Start Coaching
+              ابدأ الكوتشينج
             </a>
             <a href="#workouts" class="btn inline-flex items-center justify-center gap-2 border-white/20 text-white hover:bg-white/10 hover:border-white/40 text-base">
-              View Programs
-              <Icon name="tabler:arrow-right" class="w-5 h-5" />
+              شاهد البرامج
+              <Icon name="tabler:arrow-left" class="w-5 h-5" />
             </a>
           </div>
 
           <div class="reveal mt-12 flex items-center gap-6">
-            <img src={coachImg} alt="Coach Fares" class="w-14 h-14 rounded-full object-cover object-top ring-2 ring-amber-500/50" />
+            <img src={coachImg} alt="الكوتش فارس" class="w-14 h-14 rounded-full object-cover object-top ring-2 ring-amber-500/50" />
             <div>
-              <p class="text-sm font-bold text-white">Coach Tem Fares</p>
-              <p class="text-xs text-gray-400">Online Coach · Nutrition · PPL Specialist</p>
+              <p class="text-sm font-bold text-white">الكوتش تم فارس</p>
+              <p class="text-xs text-gray-400">كوتش أونلاين · تغذية · متخصص PPL</p>
             </div>
           </div>
         </div>
 
         <!-- Floating Coach Card -->
-        <div class="hidden lg:flex justify-end reveal">
+        <div class="hidden lg:flex justify-start reveal">
           <div class="relative">
             <div class="absolute -inset-4 bg-amber-500/20 blur-3xl rounded-full animate-pulse-glow"></div>
             <div class="relative glass-strong rounded-3xl p-2 animate-float">
-              <img src={coachImg} alt="Coach Tem Fares" class="w-80 h-[28rem] rounded-2xl object-cover object-top" />
+              <img src={coachImg} alt="الكوتش تم فارس" class="w-80 h-[28rem] rounded-2xl object-cover object-top" />
               <div class="absolute bottom-6 left-6 right-6 glass-strong rounded-2xl p-4">
-                <p class="text-xs font-bold tracking-widest uppercase text-amber-400">20-Day Transformation</p>
-                <p class="text-lg font-black text-white mt-1">Train · Eat · Transform</p>
+                <p class="text-xs font-bold tracking-widest uppercase text-amber-400">تحول في 20 يوم</p>
+                <p class="text-lg font-black text-white mt-1">درّب · كُل · تغيّر</p>
               </div>
             </div>
           </div>
@@ -99,7 +99,7 @@ const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
     <!-- Scroll indicator -->
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 reveal">
       <div class="flex flex-col items-center gap-2 text-gray-500">
-        <span class="text-xs tracking-widest uppercase">Scroll</span>
+        <span class="text-xs tracking-widest uppercase">اسحب</span>
         <div class="w-px h-12 bg-gradient-to-b from-amber-500 to-transparent animate-pulse"></div>
       </div>
     </div>
@@ -128,12 +128,12 @@ const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
   <section class="relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-28">
       <div class="text-center max-w-2xl mx-auto mb-14 reveal">
-        <p class="text-amber-500 font-bold tracking-widest uppercase text-sm">Why TEM FARES</p>
+        <p class="text-amber-500 font-bold tracking-widest uppercase text-sm">ليه تم فارس</p>
         <h2 class="mt-3 text-3xl md:text-5xl font-black tracking-tighter text-white">
-          Coaching that delivers
+          كوتشينج يوصلك لنتائج
         </h2>
         <p class="mt-4 text-lg text-gray-400">
-          No fluff. No gimmicks. Structured training and nutrition built to get you stronger, leaner, and bigger.
+          بدون كلام فارغ. بدون حيل. تدريب وتغذية منظمة لتخليك أقوى، أنحف، وأكبر.
         </p>
       </div>
 
@@ -158,9 +158,9 @@ const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
   <section id="workouts" class="relative scroll-mt-[72px] bg-neutral-950 border-y border-white/5">
     <div class="max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-28">
       <div class="text-center max-w-2xl mx-auto mb-14 reveal">
-        <p class="text-amber-500 font-bold tracking-widest uppercase text-sm">Training</p>
-        <h2 class="mt-3 text-3xl md:text-5xl font-black tracking-tighter text-white">Push Pull Legs Split</h2>
-        <p class="mt-4 text-lg text-gray-400">A 6-day split hitting every muscle group twice. Three days, three focused sessions.</p>
+        <p class="text-amber-500 font-bold tracking-widest uppercase text-sm">التدريب</p>
+        <h2 class="mt-3 text-3xl md:text-5xl font-black tracking-tighter text-white">تقسيم Push Pull Legs</h2>
+        <p class="mt-4 text-lg text-gray-400">تقسيم 6 أيام يستهدف كل مجموعة عضلية مرتين. ثلاث أيام، ثلاث جلسات مركزة.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6 stagger">
@@ -173,7 +173,7 @@ const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
               <div class="relative h-56 overflow-hidden">
                 <img src={workout.image} alt={workout.title} loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
-                <div class="absolute top-3 left-3 flex gap-2">
+                <div class="absolute top-3 right-3 flex gap-2">
                   <span class:list={[
                     'px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wide',
                     workout.category === 'beginner' && 'bg-green-600 text-white',
@@ -181,7 +181,7 @@ const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
                     workout.category === 'advanced' && 'bg-red-600 text-white',
                   ]}>{CATEGORIES[workout.category].label}</span>
                 </div>
-                <div class="absolute bottom-3 left-3 right-3">
+                <div class="absolute bottom-3 right-3 left-3">
                   <h3 class="text-2xl font-black text-white tracking-tight">{workout.title}</h3>
                   <p class="text-sm text-gray-300 mt-0.5">{workout.subtitle}</p>
                 </div>
@@ -194,11 +194,11 @@ const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
                 </div>
                 <div class="flex items-center gap-4 text-sm text-gray-400 mb-4">
                   <span class="flex items-center gap-1"><Icon name="tabler:clock" class="w-4 h-4 text-amber-400" />{workout.duration}</span>
-                  <span class="flex items-center gap-1"><Icon name="tabler:dumbbell" class="w-4 h-4 text-amber-400" />{workout.exercises.length} exercises</span>
+                  <span class="flex items-center gap-1"><Icon name="tabler:dumbbell" class="w-4 h-4 text-amber-400" />{workout.exercises.length} تمارين</span>
                 </div>
                 <div class="mt-auto">
                   <span class="text-sm font-bold text-amber-400 group-hover:text-amber-300 transition flex items-center gap-1">
-                    View Plan <Icon name="tabler:arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    شاهد الخطة <Icon name="tabler:arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                   </span>
                 </div>
               </div>
@@ -214,9 +214,9 @@ const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
   <section id="nutrition" class="relative scroll-mt-[72px]">
     <div class="max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-28">
       <div class="text-center max-w-2xl mx-auto mb-14 reveal">
-        <p class="text-amber-500 font-bold tracking-widest uppercase text-sm">Nutrition</p>
-        <h2 class="mt-3 text-3xl md:text-5xl font-black tracking-tighter text-white">Fuel your transformation</h2>
-        <p class="mt-4 text-lg text-gray-400">Three meal plans from beginner to advanced. Exact portions, real food, zero guesswork.</p>
+        <p class="text-amber-500 font-bold tracking-widest uppercase text-sm">التغذية</p>
+        <h2 class="mt-3 text-3xl md:text-5xl font-black tracking-tighter text-white">وقود تحولك</h2>
+        <p class="mt-4 text-lg text-gray-400">ثلاثة أنظمة غذائية من المبتدئ للمتقدم. كميات محددة، أكل حقيقي، بدون تعقيد.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6 stagger">
@@ -229,7 +229,7 @@ const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
               <div class="relative h-48 overflow-hidden">
                 <img src={plan.image} alt={plan.title} loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 to-transparent" />
-                <div class="absolute bottom-3 left-3 right-3">
+                <div class="absolute bottom-3 right-3 left-3">
                   <h3 class="text-xl font-black text-white">{plan.title}</h3>
                   <p class="text-sm text-gray-300">{plan.subtitle}</p>
                 </div>
@@ -242,7 +242,7 @@ const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
                 <p class="text-sm text-gray-400 leading-relaxed mb-4">{plan.description}</p>
                 <div class="mt-auto">
                   <span class="text-sm font-bold text-amber-400 group-hover:text-amber-300 transition flex items-center gap-1">
-                    View Meal Plan <Icon name="tabler:arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    شاهد النظام <Icon name="tabler:arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                   </span>
                 </div>
               </div>
@@ -258,9 +258,9 @@ const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
   <section id="pricing" class="relative scroll-mt-[72px] bg-neutral-950 border-y border-white/5">
     <div class="max-w-6xl mx-auto px-4 md:px-6 py-20 md:py-28">
       <div class="text-center max-w-2xl mx-auto mb-14 reveal">
-        <p class="text-amber-500 font-bold tracking-widest uppercase text-sm">Pricing</p>
-        <h2 class="mt-3 text-3xl md:text-5xl font-black tracking-tighter text-white">Private Online Coaching</h2>
-        <p class="mt-4 text-lg text-gray-400">Choose your package. All plans include full training and nutrition programming.</p>
+        <p class="text-amber-500 font-bold tracking-widest uppercase text-sm">الأسعار</p>
+        <h2 class="mt-3 text-3xl md:text-5xl font-black tracking-tighter text-white">كوتشينج أونلاين خاص</h2>
+        <p class="mt-4 text-lg text-gray-400">اختار باقتك. كل الباقات تشمل برمجة تدريب وتغذية كاملة.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6 stagger">
@@ -282,7 +282,7 @@ const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
                 <span class="text-sm text-gray-500">{plan.period}</span>
               </div>
               {plan.originalPrice && (
-                <p class="text-sm text-gray-600 line-through mt-1">was {plan.originalPrice} EGP</p>
+                <p class="text-sm text-gray-600 line-through mt-1">بدلاً من {plan.originalPrice} جنيه</p>
               )}
               <ul class="mt-6 space-y-3 flex-grow">
                 {plan.features.map((feat) => (
@@ -296,7 +296,7 @@ const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
                 'mt-8 font-bold inline-flex items-center justify-center gap-2 rounded-full py-3.5 px-6 transition text-base',
                 plan.highlight ? 'bg-amber-500 text-black hover:bg-amber-400' : 'border border-white/20 text-white hover:bg-white/10',
               ]}>
-                Get Started
+                ابدأ الآن
               </a>
             </div>
           ))
@@ -309,19 +309,19 @@ const coachImg = '/images/WhatsApp_Image_2026-07-13_at_5.46.33_PM.jpeg';
 
   <section id="contact" class="relative scroll-mt-[72px] overflow-hidden">
     <div class="absolute inset-0">
-      <img src="https://images.unsplash.com/photo-1517836357463-d25dfe029c38?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Gym" class="w-full h-full object-cover" loading="lazy" />
+      <img src="https://images.unsplash.com/photo-1517836357463-d25dfe029c38?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="جيم" class="w-full h-full object-cover" loading="lazy" />
       <div class="absolute inset-0 bg-black/85"></div>
     </div>
     <div class="relative max-w-4xl mx-auto px-4 md:px-6 py-24 md:py-32 text-center reveal">
       <h2 class="text-4xl md:text-6xl font-black tracking-tighter text-white">
-        Your only limit is <span class="text-gradient-gold">you</span>.
+        حدودك الوحيدة هي <span class="text-gradient-gold">أنت</span>.
       </h2>
       <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-xl mx-auto">
-        20 days of disciplined training and eating. Show up every day. The results speak for themselves.
+        20 يوم من تدريب وأكل منظم. أظهر كل يوم. النتائج بتتكلم عن نفسها.
       </p>
       <a href="#pricing" class="mt-8 btn-primary font-bold inline-flex items-center justify-center gap-2 text-base">
         <Icon name="tabler:bolt" class="w-5 h-5" />
-        Choose Your Package
+        اختار باقتك
       </a>
     </div>
   </section>
