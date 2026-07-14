@@ -90,7 +90,7 @@ export const WORKOUTS: WorkoutPlan[] = [
     duration: '60 دقيقة',
     daysPerWeek: 6,
     difficulty: 2,
-    image: img('photo-1654521524872-3e0d0f935e95'),
+    image: img('photo-1571019613454-1cb2f99b2d8b'),
     exercises: [
       { name: 'Bench Press', sets: 3, reps: '10', rest: '90ث', notes: 'بار — تحكم في النزول.' },
       { name: 'Incline Dumbbell Press', sets: 3, reps: '10', rest: '75ث' },
@@ -114,7 +114,7 @@ export const WORKOUTS: WorkoutPlan[] = [
     duration: '60 دقيقة',
     daysPerWeek: 6,
     difficulty: 2,
-    image: img('photo-1533636406-6e8d2c7e9e3e'),
+    image: img('photo-1534438327275-aea6d88d1e4d'),
     exercises: [
       { name: 'Lat Pulldown', sets: 4, reps: '8-10', rest: '90ث' },
       { name: 'Seated Row', sets: 4, reps: '8-10', rest: '75ث', notes: 'كايل — اعصر لوحي الكتف.' },
@@ -137,7 +137,7 @@ export const WORKOUTS: WorkoutPlan[] = [
     duration: '70 دقيقة',
     daysPerWeek: 6,
     difficulty: 3,
-    image: img('photo-1574680080446-39e6f5334e87'),
+    image: img('photo-1530549387789-4c1017266635'),
     exercises: [
       { name: 'Leg Press (Machine)', sets: 4, reps: '10-12', rest: '90ث', notes: 'مدى حركة كامل.' },
       { name: 'Bodyweight Squat', sets: 2, reps: '15', rest: '45ث', notes: 'إحماء / تفعيل.' },
@@ -160,7 +160,7 @@ export const NUTRITION_PLANS: NutritionPlan[] = [
     category: 'beginner',
     duration: '20 يوم',
     calories: '~2,200 سعرة',
-    image: img('photo-1547573854-74d2a71d0826'),
+    image: img('photo-1490645935447-4f59d31e9eabb'),
     meals: [
       {
         name: 'الوجبة الأولى — الإفطار',
@@ -213,7 +213,7 @@ export const NUTRITION_PLANS: NutritionPlan[] = [
     category: 'intermediate',
     duration: '20 يوم',
     calories: '~2,600 سعرة',
-    image: img('photo-1490645935447-4f59d31e9eabb'),
+    image: img('photo-1546069901-ba9599a7e93c'),
     meals: [
       {
         name: 'الوجبة الأولى — الإفطار',
@@ -280,7 +280,7 @@ export const NUTRITION_PLANS: NutritionPlan[] = [
     category: 'advanced',
     duration: '20 يوم',
     calories: '~2,800 سعرة',
-    image: img('photo-1607962837359-5e7228913414'),
+    image: img('photo-1512621776951-5712f7c57e88'),
     meals: [
       {
         name: 'الوجبة الأولى — الإفطار',
