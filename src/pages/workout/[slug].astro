@@ -2,8 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon/components';
-import { WORKOUTS, CATEGORIES, GOALS, getWorkoutBySlug } from '~/data/workouts';
-import { getPermalink } from '~/utils/permalinks';
+import { WORKOUTS, CATEGORIES, GOALS } from '~/data/workouts';
 
 export const prerender = true;
 
@@ -26,85 +25,43 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Header ******************* -->
-
   <section class="relative md:-mt-[76px] not-prose overflow-hidden">
     <div class="absolute inset-0">
-      <img
-        src={workout.image}
-        alt={workout.title}
-        class="w-full h-full object-cover"
-        loading="eager"
-        fetchpriority="high"
-      />
+      <img src={workout.image} alt={workout.title} class="w-full h-full object-cover" loading="eager" fetchpriority="high" />
       <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/80 to-neutral-950"></div>
     </div>
 
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6">
       <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
       <div class="py-16 md:py-24">
-        <a
-          href="/#workouts"
-          class="inline-flex items-center gap-1 text-sm font-semibold text-gray-400 hover:text-red-500 transition mb-6 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
-        >
+        <a href="/#workouts" class="reveal inline-flex items-center gap-1 text-sm font-semibold text-gray-400 hover:text-amber-400 transition mb-6">
           <Icon name="tabler:arrow-left" class="w-4 h-4" />
           All Workouts
         </a>
 
-        <div class="flex flex-wrap items-center gap-2 mb-4 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-          <span
-            class:list={[
-              'px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide',
-              workout.category === 'beginner' && 'bg-green-600 text-white',
-              workout.category === 'intermediate' && 'bg-amber-500 text-white',
-              workout.category === 'advanced' && 'bg-red-600 text-white',
-            ]}
-          >
-            {cat.label}
-          </span>
-          {
-            goalLabels.map((label) => (
-              <span class="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide bg-white/10 text-gray-300">
-                {label}
-              </span>
-            ))
-          }
+        <div class="reveal flex flex-wrap items-center gap-2 mb-4">
+          <span class:list={[
+            'px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide',
+            workout.category === 'beginner' && 'bg-green-600 text-white',
+            workout.category === 'intermediate' && 'bg-amber-500 text-black',
+            workout.category === 'advanced' && 'bg-red-600 text-white',
+          ]}>{cat.label}</span>
+          {goalLabels.map((label) => (
+            <span class="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide glass text-gray-300">{label}</span>
+          ))}
         </div>
 
-        <h1
-          class="text-4xl md:text-6xl font-extrabold tracking-tighter text-white intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
-        >
-          {workout.title}
-        </h1>
-        <p
-          class="mt-3 text-xl text-gray-300 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
-        >
-          {workout.subtitle}
-        </p>
+        <h1 class="reveal text-4xl md:text-6xl font-black tracking-tighter text-white">{workout.title}</h1>
+        <p class="reveal mt-3 text-xl text-gray-300">{workout.subtitle}</p>
 
-        <div
-          class="mt-6 flex flex-wrap gap-6 text-sm text-gray-400 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
-        >
+        <div class="reveal mt-6 flex flex-wrap gap-6 text-sm text-gray-400">
+          <span class="flex items-center gap-1.5"><Icon name="tabler:clock" class="w-5 h-5 text-amber-400" />{workout.duration}</span>
+          <span class="flex items-center gap-1.5"><Icon name="tabler:calendar-week" class="w-5 h-5 text-amber-400" />{workout.daysPerWeek} days/week</span>
+          <span class="flex items-center gap-1.5"><Icon name="tabler:dumbbell" class="w-5 h-5 text-amber-400" />{workout.exercises.length} exercises</span>
           <span class="flex items-center gap-1.5">
-            <Icon name="tabler:clock" class="w-5 h-5 text-red-500" />
-            {workout.duration}
-          </span>
-          <span class="flex items-center gap-1.5">
-            <Icon name="tabler:calendar-week" class="w-5 h-5 text-red-500" />
-            {workout.daysPerWeek} days/week
-          </span>
-          <span class="flex items-center gap-1.5">
-            <Icon name="tabler:dumbbell" class="w-5 h-5 text-red-500" />
-            {workout.exercises.length} exercises
-          </span>
-          <span class="flex items-center gap-1.5">
-            {
-              [...Array(3)].map((_, i) => (
-                <Icon
-                  name="tabler:flame"
-                  class:list={['w-5 h-5', i < workout.difficulty ? 'text-red-500' : 'text-white/10']}
-                />
-              ))
+            {[...Array(3)].map((_, i) => (
+              <Icon name="tabler:flame" class:list={['w-5 h-5', i < workout.difficulty ? 'text-amber-400' : 'text-white/10']} />
+            ))
             }
             Difficulty
           </span>
@@ -113,58 +70,53 @@ const metadata = {
     </div>
   </section>
 
-  <!-- Description & Exercise List ***** -->
-
   <section class="relative">
     <div class="max-w-4xl mx-auto px-4 md:px-6 py-12 md:py-20">
-      <div class="prose prose-lg dark:prose-invert max-w-none mb-12">
+      <div class="reveal mb-12">
         <p class="text-lg text-gray-300 leading-relaxed">{workout.description}</p>
       </div>
 
-      <div class="flex items-center gap-3 mb-8">
-        <div class="w-1 h-8 bg-red-600 rounded-full"></div>
-        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white">Exercise List</h2>
+      <div class="flex items-center gap-3 mb-8 reveal">
+        <div class="w-1 h-8 bg-amber-500 rounded-full"></div>
+        <h2 class="text-2xl md:text-3xl font-black tracking-tight text-white">Exercise List</h2>
       </div>
 
-      <div class="space-y-3">
-        {
-          workout.exercises.map((ex, i) => (
-            <div class="group flex flex-col sm:flex-row sm:items-center gap-4 rounded-2xl bg-neutral-900 border border-white/5 hover:border-red-600/30 transition p-5 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-              <div class="flex items-center gap-4 flex-grow">
-                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-red-600/10 text-red-500 font-extrabold flex items-center justify-center text-lg">
-                  {i + 1}
-                </div>
-                <div>
-                  <h3 class="text-lg font-bold text-white">{ex.name}</h3>
-                  {ex.notes && <p class="text-sm text-gray-500 mt-0.5">{ex.notes}</p>}
-                </div>
+      <div class="space-y-3 stagger">
+        {workout.exercises.map((ex, i) => (
+          <div class="group flex flex-col sm:flex-row sm:items-center gap-4 rounded-2xl glass glass-hover hover:border-amber-500/30 p-5">
+            <div class="flex items-center gap-4 flex-grow">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-500/10 text-amber-400 font-black flex items-center justify-center text-lg">
+                {i + 1}
               </div>
-              <div class="flex items-center gap-6 sm:gap-8 pl-14 sm:pl-0">
-                <div class="text-center">
-                  <div class="text-xs uppercase tracking-wider text-gray-500">Sets</div>
-                  <div class="text-xl font-extrabold text-white">{ex.sets}</div>
-                </div>
-                <div class="text-center">
-                  <div class="text-xs uppercase tracking-wider text-gray-500">Reps</div>
-                  <div class="text-xl font-extrabold text-white">{ex.reps}</div>
-                </div>
-                <div class="text-center">
-                  <div class="text-xs uppercase tracking-wider text-gray-500">Rest</div>
-                  <div class="text-xl font-extrabold text-red-500">{ex.rest}</div>
-                </div>
+              <div>
+                <h3 class="text-lg font-bold text-white">{ex.name}</h3>
+                {ex.notes && <p class="text-sm text-gray-500 mt-0.5">{ex.notes}</p>}
               </div>
             </div>
-          ))
-        }
+            <div class="flex items-center gap-6 sm:gap-8 pl-14 sm:pl-0">
+              <div class="text-center">
+                <div class="text-xs uppercase tracking-wider text-gray-500">Sets</div>
+                <div class="text-xl font-black text-white">{ex.sets}</div>
+              </div>
+              <div class="text-center">
+                <div class="text-xs uppercase tracking-wider text-gray-500">Reps</div>
+                <div class="text-xl font-black text-white">{ex.reps}</div>
+              </div>
+              <div class="text-center">
+                <div class="text-xs uppercase tracking-wider text-gray-500">Rest</div>
+                <div class="text-xl font-black text-amber-400">{ex.rest}</div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
 
-      <!-- CTA -->
-      <div class="mt-12 rounded-2xl bg-gradient-to-br from-red-600/20 to-neutral-900 border border-red-600/20 p-8 text-center">
-        <h3 class="text-2xl font-extrabold text-white">Ready to start?</h3>
-        <p class="mt-2 text-gray-400">Save this plan, hit the gym, and track every set.</p>
-        <a href="/#workouts" class="mt-6 btn-primary font-semibold inline-flex items-center justify-center gap-2">
-          <Icon name="tabler:arrow-left" class="w-5 h-5" />
-          Browse More Plans
+      <div class="mt-12 rounded-2xl bg-gradient-to-br from-amber-500/20 to-neutral-900 border border-amber-500/20 p-8 text-center reveal">
+        <h3 class="text-2xl font-black text-white">Ready to start?</h3>
+        <p class="mt-2 text-gray-400">Follow this plan for 20 days. Combine with the matching nutrition plan for best results.</p>
+        <a href="/#nutrition" class="mt-6 btn-primary font-bold inline-flex items-center justify-center gap-2">
+          <Icon name="tabler:salad" class="w-5 h-5" />
+          View Nutrition Plans
         </a>
       </div>
     </div>

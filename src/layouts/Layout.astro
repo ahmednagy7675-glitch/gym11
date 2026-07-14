@@ -12,7 +12,6 @@ import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 
-// Comment the line below to disable View Transitions
 import { ClientRouter } from 'astro:transitions';
 
 import type { MetaData as MetaDataType } from '~/types';
@@ -36,15 +35,84 @@ const { language, textDirection } = I18N;
     <SiteVerification />
     <Analytics />
 
-    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="images.unsplash.com" />
 
-    <!-- Comment the line below to disable View Transitions -->
     <ClientRouter fallback="swap" />
   </head>
 
   <body class="antialiased text-default bg-page tracking-tight">
-    <slot />
+    <!-- Loading Screen -->
+    <div class="loader-screen" id="loader-screen">
+      <div class="loader-bars">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="loader-text">TEM FARES</div>
+    </div>
+
+    <div class="page-transition" data-page-content>
+      <slot />
+    </div>
 
     <BasicScripts />
+
+    <script>
+      // Loading screen
+      (function () {
+        const loader = document.getElementById('loader-screen');
+        if (!loader) return;
+        const hide = () => {
+          loader.classList.add('loaded');
+          setTimeout(() => loader.remove(), 700);
+        };
+        if (document.readyState === 'complete') {
+          hide();
+        } else {
+          window.addEventListener('load', hide);
+          setTimeout(hide, 2500);
+        }
+      })();
+
+      // Scroll reveal with IntersectionObserver
+      (function () {
+        const revealEls = document.querySelectorAll('.reveal, .stagger');
+        if (!revealEls.length) return;
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+        );
+        revealEls.forEach((el) => io.observe(el));
+      })();
+    </script>
+
+    <script>
+      // Re-run on Astro view transitions
+      document.addEventListener('astro:page-load', () => {
+        const loader = document.getElementById('loader-screen');
+        if (loader) {
+          loader.classList.add('loaded');
+          setTimeout(() => loader.remove(), 700);
+        }
+        const revealEls = document.querySelectorAll('.reveal, .stagger');
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+        );
+        revealEls.forEach((el) => io.observe(el));
+      });
+    </script>
   </body>
 </html>

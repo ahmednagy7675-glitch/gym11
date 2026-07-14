@@ -1,0 +1,131 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { NUTRITION_PLANS, CATEGORIES } from '~/data/workouts';
+
+export const prerender = true;
+
+export const getStaticPaths = (() => {
+  return NUTRITION_PLANS.map((n) => ({
+    params: { slug: n.slug },
+    props: { plan: n },
+  }));
+}) satisfies GetStaticPaths;
+
+const { plan } = Astro.props;
+
+const cat = CATEGORIES[plan.category];
+
+const metadata = {
+  title: `${plan.title} — ${plan.subtitle}`,
+  description: plan.description,
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="relative md:-mt-[76px] not-prose overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={plan.image} alt={plan.title} class="w-full h-full object-cover" loading="eager" fetchpriority="high" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/80 to-neutral-950"></div>
+    </div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
+      <div class="py-16 md:py-24">
+        <a href="/#nutrition" class="reveal inline-flex items-center gap-1 text-sm font-semibold text-gray-400 hover:text-amber-400 transition mb-6">
+          <Icon name="tabler:arrow-left" class="w-4 h-4" />
+          All Nutrition Plans
+        </a>
+
+        <div class="reveal flex flex-wrap items-center gap-2 mb-4">
+          <span class:list={[
+            'px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide',
+            plan.category === 'beginner' && 'bg-green-600 text-white',
+            plan.category === 'intermediate' && 'bg-amber-500 text-black',
+            plan.category === 'advanced' && 'bg-red-600 text-white',
+          ]}>{cat.label}</span>
+          <span class="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide glass text-gray-300">{plan.calories}</span>
+        </div>
+
+        <h1 class="reveal text-4xl md:text-6xl font-black tracking-tighter text-white">{plan.title}</h1>
+        <p class="reveal mt-3 text-xl text-gray-300">{plan.subtitle}</p>
+
+        <div class="reveal mt-6 flex flex-wrap gap-6 text-sm text-gray-400">
+          <span class="flex items-center gap-1.5"><Icon name="tabler:calendar" class="w-5 h-5 text-amber-400" />{plan.duration}</span>
+          <span class="flex items-center gap-1.5"><Icon name="tabler:flame" class="w-5 h-5 text-amber-400" />{plan.calories}</span>
+          <span class="flex items-center gap-1.5"><Icon name="tabler:tools-kitchen-2" class="w-5 h-5 text-amber-400" />{plan.meals.length} meals</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-12 md:py-20">
+      <div class="reveal mb-12">
+        <p class="text-lg text-gray-300 leading-relaxed">{plan.description}</p>
+      </div>
+
+      <div class="flex items-center gap-3 mb-8 reveal">
+        <div class="w-1 h-8 bg-amber-500 rounded-full"></div>
+        <h2 class="text-2xl md:text-3xl font-black tracking-tight text-white">Daily Meal Plan</h2>
+      </div>
+
+      <div class="space-y-4 stagger">
+        {plan.meals.map((meal, i) => (
+          <div class="rounded-2xl glass glass-hover hover:border-amber-500/30 p-6">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-500/10 text-amber-400 font-black flex items-center justify-center text-lg">
+                  {i + 1}
+                </div>
+                <h3 class="text-lg font-bold text-white">{meal.name}</h3>
+              </div>
+              <span class="text-sm text-gray-500 flex items-center gap-1">
+                <Icon name="tabler:clock" class="w-4 h-4" />
+                {meal.time}
+              </span>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-3 pl-12 sm:pl-0">
+              {meal.items.map((item) => (
+                <div class="flex items-start gap-2">
+                  <Icon name="tabler:circle-filled" class="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span class="text-sm font-semibold text-gray-300">{item.label}:</span>
+                    <span class="text-sm text-gray-400 ml-1">{item.items.join(', ')}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {plan.extras.length > 0 && (
+        <div class="mt-10 reveal">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-1 h-8 bg-amber-500 rounded-full"></div>
+            <h2 class="text-2xl md:text-3xl font-black tracking-tight text-white">Daily Rules</h2>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3">
+            {plan.extras.map((extra) => (
+              <div class="flex items-start gap-2 glass rounded-xl p-4">
+                <Icon name="tabler:check" class="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                <span class="text-sm text-gray-300">{extra}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div class="mt-12 rounded-2xl bg-gradient-to-br from-amber-500/20 to-neutral-900 border border-amber-500/20 p-8 text-center reveal">
+        <h3 class="text-2xl font-black text-white">Combine with training</h3>
+        <p class="mt-2 text-gray-400">Follow this nutrition plan alongside the PPL workout split for the full 20-day transformation.</p>
+        <a href="/#workouts" class="mt-6 btn-primary font-bold inline-flex items-center justify-center gap-2">
+          <Icon name="tabler:barbell" class="w-5 h-5" />
+          View Workout Plans
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

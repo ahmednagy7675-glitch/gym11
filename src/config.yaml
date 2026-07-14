@@ -1,29 +1,28 @@
 site:
-  name: IRONPULSE
-  site: 'https://ironpulse.example.com'
+  name: TEM FARES
+  site: 'https://temfares.com'
   base: '/'
   trailingSlash: false
-
   googleSiteVerificationId: false
 
 metadata:
   title:
-    default: IRONPULSE
-    template: '%s — IRONPULSE'
-  description: "Premium workout plans for every level. Train smarter, get stronger, and transform your body with IRONPULSE."
+    default: TEM FARES — Online Coach
+    template: '%s — TEM FARES'
+  description: "Online coaching by Tem Fares. Premium workout and nutrition plans built to transform your body."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: IRONPULSE
+    site_name: TEM FARES
     images:
       - url: '~/assets/images/default.png'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@ironpulse'
-    site: '@ironpulse'
+    handle: '@temfares'
+    site: '@temfares'
     cardType: summary_large_image
 
 i18n:
@@ -34,31 +33,26 @@ apps:
   blog:
     isEnabled: false
     postsPerPage: 6
-
     post:
       isEnabled: false
       permalink: '/blog/%slug%'
       robots:
         index: true
-
     list:
       isEnabled: false
       pathname: 'blog'
       robots:
         index: true
-
     category:
       isEnabled: false
       pathname: 'category'
       robots:
         index: true
-
     tag:
       isEnabled: false
       pathname: 'tag'
       robots:
         index: false
-
     isRelatedPostsEnabled: false
     relatedPostsCount: 4
 

@@ -2,37 +2,17 @@ import { getPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
-    {
-      text: 'Workouts',
-      href: getPermalink('/#workouts'),
-    },
-    {
-      text: 'Categories',
-      links: [
-        { text: 'Beginner', href: getPermalink('/#beginner') },
-        { text: 'Intermediate', href: getPermalink('/#intermediate') },
-        { text: 'Advanced', href: getPermalink('/#advanced') },
-      ],
-    },
-    {
-      text: 'Filters',
-      links: [
-        { text: 'Muscle Gain', href: getPermalink('/#muscle-gain') },
-        { text: 'Fat Loss', href: getPermalink('/#fat-loss') },
-        { text: 'Strength', href: getPermalink('/#strength') },
-        { text: 'Push Pull Legs', href: getPermalink('/#ppl') },
-      ],
-    },
-    {
-      text: 'About',
-      href: getPermalink('/about'),
-    },
+    { text: 'Home', href: getPermalink('/') },
+    { text: 'Workouts', href: getPermalink('/#workouts') },
+    { text: 'Nutrition', href: getPermalink('/#nutrition') },
+    { text: 'Pricing', href: getPermalink('/#pricing') },
+    { text: 'About', href: getPermalink('/about') },
   ],
   actions: [
     {
       variant: 'primary',
-      text: 'Start Training',
-      href: getPermalink('/#workouts'),
+      text: 'Start Now',
+      href: getPermalink('/#pricing'),
       icon: 'tabler:bolt',
     },
   ],
@@ -41,53 +21,37 @@ export const headerData = {
 export const footerData = {
   links: [
     {
-      title: 'Workouts',
+      title: 'Training',
       links: [
-        { text: 'All Plans', href: getPermalink('/#workouts') },
-        { text: 'Beginner', href: getPermalink('/#beginner') },
-        { text: 'Intermediate', href: getPermalink('/#intermediate') },
-        { text: 'Advanced', href: getPermalink('/#advanced') },
+        { text: 'Push Day', href: getPermalink('/workout/push-day') },
+        { text: 'Pull Day', href: getPermalink('/workout/pull-day') },
+        { text: 'Legs Day', href: getPermalink('/workout/legs-day') },
       ],
     },
     {
-      title: 'Goals',
+      title: 'Nutrition',
       links: [
-        { text: 'Muscle Gain', href: getPermalink('/#muscle-gain') },
-        { text: 'Fat Loss', href: getPermalink('/#fat-loss') },
-        { text: 'Strength', href: getPermalink('/#strength') },
-        { text: 'Push Pull Legs', href: getPermalink('/#ppl') },
+        { text: 'Beginner Plan', href: getPermalink('/nutrition/beginner-plan') },
+        { text: 'Intermediate Plan', href: getPermalink('/nutrition/intermediate-plan') },
+        { text: 'Advanced Plan', href: getPermalink('/nutrition/advanced-plan') },
       ],
     },
     {
-      title: 'Company',
+      title: 'Coach',
       links: [
-        { text: 'About', href: getPermalink('/about') },
-        { text: 'Contact', href: getPermalink('/contact') },
-        { text: 'Terms', href: getPermalink('/terms') },
-        { text: 'Privacy', href: getPermalink('/privacy') },
-      ],
-    },
-    {
-      title: 'Connect',
-      links: [
-        { text: 'Instagram', href: '#' },
-        { text: 'YouTube', href: '#' },
-        { text: 'TikTok', href: '#' },
-        { text: 'X', href: '#' },
+        { text: 'About Fares', href: getPermalink('/about') },
+        { text: 'Pricing', href: getPermalink('/#pricing') },
+        { text: 'Contact', href: '#contact' },
       ],
     },
   ],
-  secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
-  ],
+  secondaryLinks: [],
   socialLinks: [
     { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'YouTube', icon: 'tabler:brand-youtube', href: '#' },
     { ariaLabel: 'TikTok', icon: 'tabler:brand-tiktok', href: '#' },
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
+    { ariaLabel: 'YouTube', icon: 'tabler:brand-youtube', href: '#' },
   ],
   footNote: `
-    Built for athletes. <span class="text-primary font-semibold">IRONPULSE</span> — Train Harder.
+    Engineered for results. <span class="text-amber-400 font-bold">TEM FARES</span> Online Coach.
   `,
 };
